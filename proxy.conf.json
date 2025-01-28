@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://petstore.swagger.io/",
+    "target": "https://petstore.swagger.io/v2/",
     "secure": false
   }
 }
