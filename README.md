@@ -5,4 +5,4 @@ Smiply an Angular v19 application that provide UI for endpoint /pet of http://pe
 UI Framework - Angular Material
 Unit Tests runner - Karma
 State menagment - singnals builted in the framework
-Methodolgy for componets divison - dumb (elements) and smart (containers) componets
+Methodolgy for componets divison - dumb (elementsng add @angular/material) and smart (containers) componets
