@@ -68,11 +68,11 @@
             },
             "development": {
               "buildTarget": "petstor:build:development"
-            },    
-            "options": {
-              "proxyConfig": "proxy.conf.json",
-              "port": 888
             }
+          },         
+          "options": {
+            "proxyConfig": "proxy.conf.json",
+            "port": 888
           },
           "defaultConfiguration": "development"
         },
