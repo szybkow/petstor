@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { AsyncPipe } from '@angular/common';
@@ -7,6 +7,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { PetService } from '../../../services/pet.service';
+import { Status } from '../../../enums/status';
 
 @Component({
   selector: 'pts-start',
@@ -14,7 +16,6 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './start.component.scss',
   standalone: true,
   imports: [
-    AsyncPipe,
     MatGridListModule,
     MatMenuModule,
     MatIconModule,
@@ -22,9 +23,10 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
-export class StartComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+export class StartComponent implements OnInit {
 
+  private breakpointObserver = inject(BreakpointObserver);
+  private petService = inject(PetService);
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -45,4 +47,8 @@ export class StartComponent {
       ];
     })
   );
+  ngOnInit(): void {
+    this.petService.getPets([Status['AVAILABLE']]).subscribe(pets => {
+      console.log(pets);    });
+  }
 }
